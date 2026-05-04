@@ -1,3 +1,8 @@
+import anvarImg from '../assets/images/guests/anvar_narzullayev.webp'
+import azimjonImg from '../assets/images/guests/azimjon_pulatov.webp'
+import hasanxonImg from '../assets/images/guests/hasanxon_domla.webp'
+import jamshidxonImg from '../assets/images/guests/jamshidxon_ziyoxonov.webp'
+
 export interface Guest {
 	id: string
 	name: string
@@ -10,31 +15,40 @@ export interface Guest {
 
 export const GUESTS: Guest[] = [
 	{
-		id: 'guest-1',
-		name: 'Farruh Asqarov',
-		role: 'Singer',
-		bio: 'Oʻzbekistonlik mashhur qoʻshiqchi va kompozitor. Musiqiy ijodi bilan mamlakatni zabt etdi.',
-		avatar: '/src/assets/images/guest1.jpg',
-		socials: [{ type: 'Instagram', url: 'https://instagram.com/farruh' }],
-		appearedIn: ['QORbytC_h94'],
+		id: 'hasanxon-domla',
+		name: 'Hasanxon Domla',
+		role: 'Olim',
+		bio: "O'zbekistonning taniqli diniy olimi va ma'ruzachi. Millionlab tinglovchiga ilm va hayot haqida dars beradi.",
+		avatar: hasanxonImg,
+		socials: [],
+		appearedIn: [],
 	},
 	{
-		id: 'guest-2',
-		name: 'Nilufar Zokirova',
-		role: 'Actor',
-		bio: 'Teatr va kinoda taniqli aktrisa, soʻnggi intervyularida ijodiy jarayon haqida gapiradi.',
-		avatar: '/src/assets/images/guest2.jpg',
-		socials: [{ type: 'Instagram', url: 'https://instagram.com/nilufar' }],
-		appearedIn: ['Ww1RrOeTq78', '6cp7l0FEYlY'],
+		id: 'jamshidxon-ziyoxonov',
+		name: 'Jamshidxon Ziyoxonov',
+		role: 'Aktyor',
+		bio: "Teatr va kinodagi yorqin rollari bilan tanilgan o'zbek aktyori. Har bir obrazga o'zgacha ruh bag'ishlaydi.",
+		avatar: jamshidxonImg,
+		socials: [],
+		appearedIn: [],
 	},
 	{
-		id: 'guest-3',
-		name: 'Bekhzod Rahmon',
-		role: 'Influencer',
-		bio: 'Kontent yaratuvchi, audio va video podkastlarda ommabop mehmon.',
-		avatar: '/src/assets/images/guest3.jpg',
-		socials: [{ type: 'Telegram', url: 'https://t.me/bekhzod' }],
-		appearedIn: ['JqwL7ism1CU'],
+		id: 'azimjon-pulatov',
+		name: 'Azimjon Pulatov',
+		role: 'Blogger',
+		bio: 'Kontent yaratuvchi va ijtimoiy tarmoqlarda katta auditoriyaga ega blogger. Yoshlar orasida ommabop shaxsiyat.',
+		avatar: azimjonImg,
+		socials: [],
+		appearedIn: [],
+	},
+	{
+		id: 'anvar-narzullayev',
+		name: 'Anvar Narzullayev',
+		role: 'Komediant',
+		bio: "O'zbekistonning eng sevimli komediantlaridan biri. Sahna va ekranda o'z uslubi bilan millionlab tomoshabinni kuldirib kelmoqda.",
+		avatar: anvarImg,
+		socials: [],
+		appearedIn: [],
 	},
 ]
 

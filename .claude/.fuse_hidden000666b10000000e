@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /mnt/ntfs/Bekhruz/Gashtak add src/data/guests.ts src/components/Guests.tsx src/components/Platforms.tsx src/assets/images/guests/)",
+      "Bash(git -C /mnt/ntfs/Bekhruz/Gashtak commit -m ' *)",
+      "Bash(git -C /mnt/ntfs/Bekhruz/Gashtak push origin claude/review-project-design-D5eYI)",
+      "Bash(grep -v \"^import\\\\|className\\\\|svg\\\\|path\\\\|^$\")",
+      "Bash(npm install *)"
+    ]
+  }
+}

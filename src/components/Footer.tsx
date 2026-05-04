@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 const SOCIALS = [
 	{ label: 'YouTube', href: 'http://www.youtube.com/@Gashtak' },
 	{ label: 'Instagram', href: 'https://www.instagram.com/gashtak.podcast' },
@@ -5,13 +7,15 @@ const SOCIALS = [
 ]
 
 const NAV = [
-	{ label: 'Podkastlar', href: '#podkastlar' },
-	{ label: 'Mehmonlar', href: '#mehmonlar' },
-	{ label: 'Haqida', href: '#haqida' },
-	{ label: 'Tinglash', href: '#tinglash' },
+	{ key: 'nav.podcasts', href: '#podkastlar' },
+	{ key: 'nav.guests', href: '#mehmonlar' },
+	{ key: 'nav.about', href: '#haqida' },
+	{ key: 'nav.social', href: '#ijtimoiy_tarmoqlar' },
 ]
 
 export default function Footer() {
+	const { t } = useTranslation()
+
 	return (
 		<footer className='border-t border-white/8 py-14 px-6'>
 			<div className='max-w-7xl mx-auto flex flex-col gap-10'>
@@ -23,7 +27,7 @@ export default function Footer() {
 							#GASHTAK
 						</span>
 						<span className='font-barlow text-sm text-white/40'>
-							O'zbek yulduzlarini dunyoga tanitamiz
+							{t('footer.tagline')}
 						</span>
 					</div>
 
@@ -35,7 +39,7 @@ export default function Footer() {
 								href={l.href}
 								className='font-barlow text-sm uppercase tracking-widest text-white/40 hover:text-neon transition-colors'
 							>
-								{l.label}
+								{t(l.key)}
 							</a>
 						))}
 					</nav>
@@ -61,10 +65,10 @@ export default function Footer() {
 				{/* Bottom row */}
 				<div className='flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-white/8'>
 					<p className='font-barlow text-xs text-white/25'>
-						© {new Date().getFullYear()} #GASHTAK. Barcha huquqlar himoyalangan.
+						© {new Date().getFullYear()} #GASHTAK. {t('footer.rights')}
 					</p>
 					<p className='font-barlow text-xs text-white/20'>
-						O'zbekiston · Toshkent
+						{t('footer.location')}
 					</p>
 				</div>
 			</div>

@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react'
-import FadeIn from './FadeIn'
+import { useTranslation } from 'react-i18next'
 import { useInView } from '../hooks/useInView'
+import FadeIn from './FadeIn'
 
 interface Stat {
 	end: number
 	decimals?: number
 	suffix: string
-	label: string
+	labelKey: string
 }
 
 const STATS: Stat[] = [
-	{ end: 10, suffix: '+', label: 'Epizod' },
-	{ end: 3.5, decimals: 1, suffix: 'M+', label: "Ko'rishlar" },
-	{ end: 2024, suffix: '', label: 'Yildan beri' },
+	{ end: 10, suffix: '+', labelKey: 'about.stats.episodes' },
+	{ end: 3.5, decimals: 1, suffix: 'M+', labelKey: 'about.stats.views' },
+	{ end: 2024, suffix: '', labelKey: 'about.stats.since' },
 ]
 
 function AnimatedStat({ stat, active }: { stat: Stat; active: boolean }) {
+	const { t } = useTranslation()
 	const [display, setDisplay] = useState(0)
 
 	useEffect(() => {
@@ -25,10 +27,8 @@ function AnimatedStat({ stat, active }: { stat: Stat; active: boolean }) {
 		const steps = (duration / 1000) * fps
 		const increment = stat.end / steps
 		let current = 0
-		let frame = 0
 
 		const tick = () => {
-			frame++
 			current = Math.min(current + increment, stat.end)
 			setDisplay(current)
 			if (current < stat.end) requestAnimationFrame(tick)
@@ -46,13 +46,14 @@ function AnimatedStat({ stat, active }: { stat: Stat; active: boolean }) {
 				{formatted}{stat.suffix}
 			</span>
 			<span className='font-barlow text-xs uppercase tracking-widest text-white/40'>
-				{stat.label}
+				{t(stat.labelKey)}
 			</span>
 		</div>
 	)
 }
 
 export default function About() {
+	const { t } = useTranslation()
 	const { ref, inView } = useInView(0.2)
 
 	return (
@@ -66,27 +67,19 @@ export default function About() {
 								<div className='flex items-center gap-4'>
 									<div className='h-px w-12 bg-neon/40' />
 									<span className='font-barlow text-xs uppercase tracking-[0.4em] text-white/40'>
-										Biz haqimizda
+										{t('about.eyebrow')}
 									</span>
 								</div>
-								<h2 className='section-title'>Haqida</h2>
+								<h2 className='section-title'>{t('about.title')}</h2>
 							</div>
 
 							<div className='flex flex-col gap-5 font-barlow text-base md:text-lg text-white/65 leading-relaxed'>
 								<p>
-									<span className='neon-text-sm font-semibold'>#GASHTAK</span> —
-									O'zbekistonning eng mashhur yulduzlari, san'atkorlari va jamoat
-									arboblari bilan suhbatlar o'tkaziladigan ko'rsatuv.
+									<span className='neon-text-sm font-semibold'>#GASHTAK</span> —{' '}
+									{t('about.p1')}
 								</p>
-								<p>
-									Har bir podkastda biz taniqli mehmonga shaxsiy hayoti, ijodi va
-									dunyo haqidagi qarashlari to'g'risida chuqur savollar beramiz —
-									ochiq, samimiy va qiziqarli suhbat formatida.
-								</p>
-								<p>
-									Maqsadimiz — O'zbek madaniyatini va uning buyuk vakillari orqali
-									butun dunyoga tanitish.
-								</p>
+								<p>{t('about.p2')}</p>
+								<p>{t('about.p3')}</p>
 							</div>
 
 							<a
@@ -95,19 +88,19 @@ export default function About() {
 								rel='noopener noreferrer'
 								className='btn-neon self-start'
 							>
-								Kanalga obuna bo'ling
+								{t('about.subscribe')}
 							</a>
 						</div>
 					</FadeIn>
 
-					{/* Stats side — count-up triggers when scrolled into view */}
+					{/* Stats side */}
 					<FadeIn from='right'>
 						<div
 							ref={ref as React.RefObject<HTMLDivElement>}
 							className='grid grid-cols-3 gap-px bg-white/10'
 						>
 							{STATS.map(s => (
-								<AnimatedStat key={s.label} stat={s} active={inView} />
+								<AnimatedStat key={s.labelKey} stat={s} active={inView} />
 							))}
 						</div>
 					</FadeIn>

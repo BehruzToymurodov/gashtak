@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { cardThumb, type Episode } from '../../data/episodes'
 
 function RelatedCard({ ep, onClick }: { ep: Episode; onClick: () => void }) {
@@ -40,11 +41,12 @@ function RelatedCard({ ep, onClick }: { ep: Episode; onClick: () => void }) {
 interface Props { episodes: Episode[]; onWatch: (id: string) => void }
 
 export default function RelatedEpisodes({ episodes, onWatch }: Props) {
+	const { t } = useTranslation()
 	if (episodes.length === 0) return null
 	return (
 		<div className='flex flex-col gap-5'>
 			<h2 className='font-oswald font-bold text-xs uppercase tracking-[0.4em] text-white/35'>
-				Boshqa podkastlar
+				{t('watch.related')}
 			</h2>
 			<div className='grid grid-cols-2 sm:grid-cols-4 gap-3'>
 				{episodes.map(ep => (

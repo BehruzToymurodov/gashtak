@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { EPISODES } from '../data/episodes'
 import { useEpisodeMeta } from '../lib/episodesMeta'
 import CommentSection, { type SiteComment } from './watch/CommentSection'
@@ -29,6 +30,7 @@ function loadComments(id: string): SiteComment[] {
 interface Props { videoId: string; onBack: () => void; onWatch: (id: string) => void }
 
 export default function WatchPage({ videoId, onBack, onWatch }: Props) {
+	const { t } = useTranslation()
 	const meta = useEpisodeMeta(videoId)
 	const [likedByMe, setLikedByMe] = useState(() => loadLikedByMe(videoId))
 	const [likesCount, setLikesCount] = useState(() => loadLikesCount(videoId))
@@ -71,7 +73,7 @@ export default function WatchPage({ videoId, onBack, onWatch }: Props) {
 					<svg className='w-4 h-4' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
 						<path strokeLinecap='round' strokeLinejoin='round' d='M19 12H5M12 5l-7 7 7 7' />
 					</svg>
-					Orqaga
+					{t('watch.back')}
 				</button>
 				<span className='font-oswald font-bold text-sm neon-text-sm tracking-wider ml-auto'>#GASHTAK</span>
 			</div>
@@ -82,7 +84,7 @@ export default function WatchPage({ videoId, onBack, onWatch }: Props) {
 				<div className='flex flex-col gap-2'>
 					{current && (
 						<span className='font-oswald text-xs uppercase tracking-widest neon-text-sm'>
-							PODCAST {String(current.ep).padStart(2, '0')}
+							{t('watch.label')} {String(current.ep).padStart(2, '0')}
 						</span>
 					)}
 					<h1 className='font-oswald font-bold text-xl md:text-2xl text-white/90 leading-snug'>

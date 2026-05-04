@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const FEATURED_ID = 'WJr9fLQlrcw' // EP 09
@@ -5,6 +6,7 @@ const FEATURED_THUMB = `https://img.youtube.com/vi/${FEATURED_ID}/maxresdefault.
 
 export default function Hero() {
 	const navigate = useNavigate()
+	const { t } = useTranslation()
 
 	return (
 		<section
@@ -49,7 +51,7 @@ export default function Hero() {
 					className='font-barlow text-xs md:text-sm uppercase tracking-[0.4em] text-white/40 animate-fade-up'
 					style={{ animationDelay: '0.1s' }}
 				>
-					O'zbek Celebrity Podcast
+					{t('hero.tag')}
 				</p>
 
 				<h1
@@ -64,14 +66,14 @@ export default function Hero() {
 					className='font-barlow text-lg md:text-xl text-white/70 max-w-lg animate-fade-up'
 					style={{ animationDelay: '0.35s' }}
 				>
-					O'zbek yulduzlarini dunyoga tanitamiz
+					{t('hero.tagline')}
 				</p>
 
 				<p
 					className='font-barlow text-sm text-white/40 uppercase tracking-widest animate-fade-up'
 					style={{ animationDelay: '0.45s' }}
 				>
-					Mashxur siymolar · Qiziqarli suhbatlar
+					{t('hero.sub')}
 				</p>
 
 				{/* CTAs */}
@@ -88,7 +90,7 @@ export default function Hero() {
 						<svg className='w-5 h-5' viewBox='0 0 24 24' fill='currentColor'>
 							<path d='M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z' />
 						</svg>
-						YouTube'da Ko'ring
+						{t('hero.watch')}
 					</a>
 					<a
 						href='https://t.me/hashtag_gashtak'
@@ -111,7 +113,7 @@ export default function Hero() {
 					<div className='flex items-center gap-3 mb-3'>
 						<div className='h-px flex-1 bg-neon/30' />
 						<span className='font-barlow text-[10px] uppercase tracking-[0.4em] text-white/35'>
-							So'nggi mashhur epizod
+							{t('hero.latestEp')}
 						</span>
 						<div className='h-px flex-1 bg-neon/30' />
 					</div>
@@ -139,10 +141,10 @@ export default function Hero() {
 								EP 09
 							</span>
 							<span className='font-oswald font-semibold text-sm text-white/90 group-hover:text-neon transition-colors line-clamp-2'>
-								720 000+ ko'rish
+								720 000+ {t('hero.views')}
 							</span>
 							<span className='font-barlow text-xs text-white/35 uppercase tracking-widest'>
-								Ko'rish uchun bosing →
+								{t('hero.watchCta')}
 							</span>
 						</div>
 					</button>
@@ -151,7 +153,7 @@ export default function Hero() {
 
 			{/* Scroll indicator */}
 			<div className='absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/25'>
-				<span className='font-barlow text-xs uppercase tracking-widest'>Pastga</span>
+				<span className='font-barlow text-xs uppercase tracking-widest'>{t('hero.scrollDown')}</span>
 				<div className='w-px h-12 bg-gradient-to-b from-white/25 to-transparent' />
 			</div>
 		</section>

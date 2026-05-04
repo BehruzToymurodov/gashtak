@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import backgroundImg from '../assets/images/background.png'
+import backgroundImg from '../assets/images/background.webp'
 import gashtakSoundSrc from '../assets/sounds/gashtak_sound.mp3'
 
 type LetterState = 'unlit' | 'randomizing' | 'flickering' | 'lit'

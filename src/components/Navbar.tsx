@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from '../i18n/LanguageSwitcher'
 
 const LINKS = [
-	{ label: 'Podkastlar', href: '#podkastlar' },
-	{ label: 'Mehmonlar', href: '#mehmonlar' },
-	{ label: 'Haqida', href: '#haqida' },
-	{ label: 'Tinglash', href: '#tinglash' },
-	{ label: 'Aloqa', href: '#aloqa' },
+	{ key: 'nav.podcasts', href: '#podkastlar' },
+	{ key: 'nav.guests', href: '#mehmonlar' },
+	{ key: 'nav.about', href: '#haqida' },
+	{ key: 'nav.social', href: '#ijtimoiy_tarmoqlar' },
+	{ key: 'nav.contact', href: '#aloqa' },
 ]
 
 export default function Navbar() {
+	const { t } = useTranslation()
 	const [scrolled, setScrolled] = useState(false)
 	const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -43,9 +46,10 @@ export default function Navbar() {
 							href={l.href}
 							className='font-barlow text-sm uppercase tracking-widest text-white/60 hover:text-neon transition-colors duration-200'
 						>
-							{l.label}
+							{t(l.key)}
 						</a>
 					))}
+					<LanguageSwitcher />
 					<a
 						href='https://www.youtube.com/@gashtak'
 						target='_blank'
@@ -78,7 +82,7 @@ export default function Navbar() {
 			{/* Mobile dropdown */}
 			<div
 				className={`md:hidden overflow-hidden transition-all duration-300 bg-black/95 border-b border-white/10
-          ${mobileOpen ? 'max-h-64' : 'max-h-0'}`}
+          ${mobileOpen ? 'max-h-80' : 'max-h-0'}`}
 			>
 				<nav className='flex flex-col px-6 pb-6 gap-5 pt-4'>
 					{LINKS.map(l => (
@@ -88,9 +92,12 @@ export default function Navbar() {
 							onClick={() => setMobileOpen(false)}
 							className='font-oswald text-lg uppercase tracking-widest text-white/70 hover:text-neon transition-colors'
 						>
-							{l.label}
+							{t(l.key)}
 						</a>
 					))}
+					<div className='pt-1'>
+						<LanguageSwitcher />
+					</div>
 					<a
 						href='https://www.youtube.com/@gashtak'
 						target='_blank'

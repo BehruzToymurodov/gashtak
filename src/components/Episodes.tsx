@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { cardThumb, EPISODES, type Episode } from '../data/episodes'
 import { type EpisodeMeta, useEpisodesMeta } from '../lib/episodesMeta'
 import FadeIn from './FadeIn'
 
-function formatViews(value: number) {
-	return new Intl.NumberFormat('uz-UZ').format(value)
+function formatViews(value: number, lang: string) {
+	const locale = lang === 'ru' ? 'ru-RU' : lang === 'en' ? 'en-US' : 'uz-UZ'
+	return new Intl.NumberFormat(locale).format(value)
 }
 
 export function EpisodeCard({
@@ -15,6 +17,7 @@ export function EpisodeCard({
 	onWatch: () => void
 	priority?: boolean
 }) {
+	const { t, i18n } = useTranslation()
 	const [imgError, setImgError] = useState(false)
 	const views = ep.views ?? 0
 
@@ -42,7 +45,7 @@ export function EpisodeCard({
 					EP {String(ep.ep).padStart(2, '0')}
 				</div>
 				<div className='absolute top-3 right-3 font-barlow text-[11px] uppercase tracking-widest text-white/75 bg-black/70 border border-white/10 px-2 py-1'>
-					{formatViews(views)} ko'rish
+					{formatViews(views, i18n.language)} {t('episodes.views')}
 				</div>
 				<div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
 					<div className='w-14 h-14 rounded-full border border-neon/60 flex items-center justify-center bg-black/50 backdrop-blur-sm'>
@@ -60,7 +63,7 @@ export function EpisodeCard({
 				{meta && <p className='font-barlow text-xs text-white/40 uppercase tracking-widest'>{meta.author}</p>}
 				<div className='mt-auto pt-3 flex items-center gap-1.5 text-xs font-barlow uppercase tracking-widest text-neon/70 group-hover:text-neon transition-colors'>
 					<svg className='w-3.5 h-3.5' viewBox='0 0 24 24' fill='currentColor'><path d='M8 5v14l11-7z' /></svg>
-					Ko'rish
+					{t('episodes.watch')}
 				</div>
 			</div>
 		</button>
@@ -68,6 +71,7 @@ export function EpisodeCard({
 }
 
 export default function Episodes({ onWatch, onBrowseAll }: { onWatch: (id: string) => void; onBrowseAll: () => void }) {
+	const { t } = useTranslation()
 	const metas = useEpisodesMeta(EPISODES)
 	const popular = useMemo(
 		() => [...EPISODES].sort((a, b) => (b.views ?? 0) - (a.views ?? 0)).slice(0, 4),
@@ -82,7 +86,7 @@ export default function Episodes({ onWatch, onBrowseAll }: { onWatch: (id: strin
 						<FadeIn>
 							<div className='mb-6 flex items-center gap-4'>
 								<div className='h-px flex-1 max-w-[3rem] bg-neon/40' />
-								<span className='font-oswald text-lg uppercase tracking-[0.35em] neon-text'>Mashhur podkastlar</span>
+								<span className='font-oswald text-lg uppercase tracking-[0.35em] neon-text'>{t('episodes.eyebrow')}</span>
 								<div className='h-px flex-1 max-w-[3rem] bg-neon/40' />
 							</div>
 						</FadeIn>
@@ -100,9 +104,9 @@ export default function Episodes({ onWatch, onBrowseAll }: { onWatch: (id: strin
 					<div className='mb-14 flex flex-col gap-3'>
 						<div className='flex items-center gap-4'>
 							<div className='h-px flex-1 max-w-[3rem] bg-neon/40' />
-							<span className='font-barlow text-xs uppercase tracking-[0.4em] text-white/40'>Barcha podkastlar</span>
+							<span className='font-barlow text-xs uppercase tracking-[0.4em] text-white/40'>{t('episodes.all')}</span>
 						</div>
-						<h2 className='section-title'>Podkastlar</h2>
+						<h2 className='section-title'>{t('episodes.title')}</h2>
 					</div>
 				</FadeIn>
 
@@ -116,7 +120,7 @@ export default function Episodes({ onWatch, onBrowseAll }: { onWatch: (id: strin
 
 				<FadeIn className='mt-12 text-center'>
 					<button onClick={onBrowseAll} className='btn-outline inline-flex'>
-						Barcha podkastlarni ko'rish
+						{t('episodes.viewAll')}
 						<svg className='w-4 h-4 ml-1' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
 							<path d='M5 12h14M12 5l7 7-7 7' />
 						</svg>

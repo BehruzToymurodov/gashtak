@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /mnt/ntfs/Bekhruz/Gashtak add src/data/guests.ts src/components/Guests.tsx src/components/Platforms.tsx src/assets/images/guests/)"
+    ]
+  }
+}
