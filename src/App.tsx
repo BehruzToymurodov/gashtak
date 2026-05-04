@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState } from 'react'
 import { Navigate, Route, Routes, useNavigate, useParams } from 'react-router-dom'
 import About from './components/About'
+import Contact from './components/Contact'
 import ErrorBoundary from './components/ErrorBoundary'
 import Episodes from './components/Episodes'
 import Footer from './components/Footer'
@@ -52,6 +53,7 @@ function HomePage() {
 					</ErrorBoundary>
 					<About />
 					<Platforms />
+					<Contact />
 				</main>
 				<Footer />
 			</div>
