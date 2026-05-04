@@ -6,6 +6,11 @@ export interface Episode {
 	views?: number
 }
 
+/** Returns a 480×360 thumbnail — suitable for grid cards. */
+export function cardThumb(youtubeId: string): string {
+	return `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
+}
+
 export const EPISODES: Episode[] = [
 	{
 		ep: 1,
