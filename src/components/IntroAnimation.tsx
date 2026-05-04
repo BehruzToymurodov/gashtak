@@ -19,16 +19,22 @@ const FLICKER_DURATION = 520
 const HOLD_AFTER_LIT = 1200
 
 export default function IntroAnimation({ onComplete }: Props) {
-	const [phase, setPhase] = useState<'animating' | 'exiting'>('animating')
+	const [started, setStarted] = useState(false)
+	const [phase, setPhase] = useState<'idle' | 'animating' | 'exiting'>('idle')
 	const [letters, setLetters] = useState<LetterState[]>(
 		Array(TITLE.length).fill('unlit'),
 	)
 	const [displayChars, setDisplayChars] = useState<string[]>(TITLE.split(''))
 	const audioRef = useRef<HTMLAudioElement | null>(null)
 	const timeoutsRef = useRef<number[]>([])
+	const onCompleteRef = useRef(onComplete)
+	onCompleteRef.current = onComplete
+
 	const allLit = letters.every(letter => letter === 'lit')
 
 	useEffect(() => {
+		if (!started) return
+
 		const addTimeout = (cb: () => void, delay: number) => {
 			const id = window.setTimeout(cb, delay)
 			timeoutsRef.current.push(id)
@@ -36,24 +42,8 @@ export default function IntroAnimation({ onComplete }: Props) {
 
 		const audio = new Audio(gashtakSoundSrc)
 		audio.volume = 0.9
-		audio.preload = 'auto'
-		audio.muted = true
 		audioRef.current = audio
-
-		void audio.play().catch(() => {
-			// If muted autoplay is blocked, we will start on first interaction.
-		})
-
-		const unlockAudioOnFirstInteraction = () => {
-			if (!audioRef.current) return
-			audioRef.current.muted = false
-			if (audioRef.current.paused) {
-				void audioRef.current.play().catch(() => {})
-			}
-		}
-		window.addEventListener('pointerdown', unlockAudioOnFirstInteraction, {
-			once: true,
-		})
+		void audio.play().catch(() => {})
 
 		const titleChars = TITLE.split('')
 
@@ -115,11 +105,10 @@ export default function IntroAnimation({ onComplete }: Props) {
 
 		addTimeout(() => {
 			setPhase('exiting')
-			addTimeout(onComplete, 900)
+			addTimeout(() => onCompleteRef.current(), 900)
 		}, totalDelay)
 
 		return () => {
-			window.removeEventListener('pointerdown', unlockAudioOnFirstInteraction)
 			timeoutsRef.current.forEach(id => clearTimeout(id))
 			timeoutsRef.current = []
 			if (audioRef.current) {
@@ -127,7 +116,12 @@ export default function IntroAnimation({ onComplete }: Props) {
 				audioRef.current.currentTime = 0
 			}
 		}
-	}, [onComplete])
+	}, [started])
+
+	const handleStart = () => {
+		setStarted(true)
+		setPhase('animating')
+	}
 
 	return (
 		<div
@@ -140,6 +134,7 @@ export default function IntroAnimation({ onComplete }: Props) {
 				backgroundPosition: 'center',
 			}}
 		>
+			{/* Vignette */}
 			<div
 				className='absolute inset-0 pointer-events-none'
 				style={{
@@ -148,6 +143,7 @@ export default function IntroAnimation({ onComplete }: Props) {
 				}}
 			/>
 
+			{/* Neon glow behind title */}
 			<div
 				className='absolute pointer-events-none'
 				style={{
@@ -158,6 +154,7 @@ export default function IntroAnimation({ onComplete }: Props) {
 				}}
 			/>
 
+			{/* Scanline */}
 			<div
 				className='absolute inset-0 pointer-events-none overflow-hidden'
 				style={{ opacity: 0.04 }}
@@ -172,6 +169,7 @@ export default function IntroAnimation({ onComplete }: Props) {
 				/>
 			</div>
 
+			{/* Title */}
 			<div
 				className={`relative z-10 flex items-center justify-center gap-2 md:gap-4 select-none
           ${allLit && phase === 'animating' ? 'intro-title-glitch' : ''}`}
@@ -192,13 +190,29 @@ export default function IntroAnimation({ onComplete }: Props) {
 				))}
 			</div>
 
-			<div
-				className={`relative z-10 mt-6 font-barlow text-sm md:text-base uppercase tracking-[0.35em]
-			  transition-opacity duration-700
-			  ${letters[TITLE.length - 1] === 'lit' ? 'opacity-100' : 'opacity-0'}`}
-				style={{ color: 'var(--text)', opacity: 0.85 }}
-			>
-				O'zbek yulduzlarini dunyoga tanitamiz
+			{/* Bottom: button + subtitle */}
+			<div className='absolute bottom-12 left-0 right-0 z-10 flex flex-col items-center gap-5'>
+				<button
+					onClick={handleStart}
+					className={`btn-neon text-base md:text-lg px-10 py-4 tracking-widest transition-all duration-500
+            ${started ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'}`}
+					style={{
+						boxShadow: started
+							? 'none'
+							: '0 0 32px rgba(125,255,244,0.3), 0 0 64px rgba(125,255,244,0.12)',
+					}}
+				>
+					Gashtaklashamiz
+				</button>
+
+				<p
+					className={`font-barlow text-sm md:text-base uppercase tracking-[0.35em] text-center
+            transition-opacity duration-500
+            ${started ? 'opacity-0' : 'opacity-60'}`}
+					style={{ color: 'var(--text)' }}
+				>
+					O'zbek yulduzlarini dunyoga tanitamiz
+				</p>
 			</div>
 		</div>
 	)

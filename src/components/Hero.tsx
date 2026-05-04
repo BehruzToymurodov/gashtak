@@ -13,7 +13,7 @@ export default function Hero() {
 		>
 			{/* Video background */}
 			<video
-				className='absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none'
+				className='absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none'
 				src='/videos/tizer.mp4'
 				autoPlay
 				muted
@@ -22,7 +22,7 @@ export default function Hero() {
 			/>
 
 			{/* Dark overlay over video */}
-			<div className='absolute inset-0 pointer-events-none bg-black/60' />
+			<div className='absolute inset-0 pointer-events-none bg-black/40' />
 
 			{/* Grid overlay */}
 			<div
