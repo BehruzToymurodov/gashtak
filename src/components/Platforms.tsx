@@ -1,3 +1,5 @@
+import FadeIn from './FadeIn'
+
 const PLATFORMS = [
 	{
 		name: 'YouTube',
@@ -23,8 +25,8 @@ const PLATFORMS = [
 	},
 	{
 		name: 'Telegram',
-		handle: '@gashtak',
-		href: 'https://t.me/+xQf-5yxpTfMyYWM0',
+		handle: '@hashtag_gashtak',
+		href: 'https://t.me/hashtag_gashtak',
 		description: 'Yangiliklar va xabarlar',
 		icon: (
 			<svg viewBox='0 0 24 24' fill='currentColor' className='w-8 h-8'>
@@ -38,8 +40,7 @@ export default function Platforms() {
 	return (
 		<section id='tinglash' className='py-24 px-6'>
 			<div className='max-w-7xl mx-auto'>
-				{/* Header */}
-				<div className='mb-14 flex flex-col gap-3 text-center'>
+				<FadeIn className='mb-14 flex flex-col gap-3 text-center'>
 					<div className='flex items-center justify-center gap-4'>
 						<div className='h-px w-12 bg-neon/40' />
 						<span className='font-barlow text-xs uppercase tracking-[0.4em] text-white/40'>
@@ -48,46 +49,42 @@ export default function Platforms() {
 						<div className='h-px w-12 bg-neon/40' />
 					</div>
 					<h2 className='section-title'>Tinglash</h2>
-				</div>
+				</FadeIn>
 
-				{/* Platform cards */}
 				<div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
-					{PLATFORMS.map(p => (
-						<a
-							key={p.name}
-							href={p.href}
-							target='_blank'
-							rel='noopener noreferrer'
-							className='group flex flex-col items-center gap-5 p-10 border border-white/10 bg-white/[0.02]
-                transition-all duration-250 hover:border-neon/50 hover:bg-white/[0.04]'
-							style={{ transition: 'all 0.25s ease' }}
-							onMouseEnter={e => {
-								;(e.currentTarget as HTMLAnchorElement).style.boxShadow =
-									'0 0 24px rgba(125,255,244,0.15), 0 0 48px rgba(125,255,244,0.06)'
-							}}
-							onMouseLeave={e => {
-								;(e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'
-							}}
-						>
-							<div className='text-white/50 group-hover:text-neon transition-colors duration-200'>
-								{p.icon}
-							</div>
-							<div className='text-center flex flex-col gap-1'>
-								<span className='font-oswald font-bold text-xl uppercase tracking-wider text-white/90 group-hover:neon-text transition-colors duration-200'>
-									{p.name}
-								</span>
-								<span className='font-barlow text-sm text-white/40'>
-									{p.handle}
-								</span>
-								<span className='font-barlow text-xs uppercase tracking-widest text-white/30 mt-1'>
-									{p.description}
-								</span>
-							</div>
-
-							<div className='font-oswald text-xs uppercase tracking-widest text-neon/60 group-hover:text-neon transition-colors mt-auto'>
-								Kuzatish →
-							</div>
-						</a>
+					{PLATFORMS.map((p, i) => (
+						<FadeIn key={p.name} delay={i * 0.1}>
+							<a
+								href={p.href}
+								target='_blank'
+								rel='noopener noreferrer'
+								className='group flex flex-col items-center gap-5 p-10 border border-white/10 bg-white/[0.02]
+                  hover:border-neon/50 hover:bg-white/[0.04] transition-all duration-250'
+								onMouseEnter={e => {
+									;(e.currentTarget as HTMLAnchorElement).style.boxShadow =
+										'0 0 24px rgba(125,255,244,0.15), 0 0 48px rgba(125,255,244,0.06)'
+								}}
+								onMouseLeave={e => {
+									;(e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'
+								}}
+							>
+								<div className='text-white/50 group-hover:text-neon transition-colors duration-200'>
+									{p.icon}
+								</div>
+								<div className='text-center flex flex-col gap-1'>
+									<span className='font-oswald font-bold text-xl uppercase tracking-wider text-white/90 group-hover:neon-text transition-colors duration-200'>
+										{p.name}
+									</span>
+									<span className='font-barlow text-sm text-white/40'>{p.handle}</span>
+									<span className='font-barlow text-xs uppercase tracking-widest text-white/30 mt-1'>
+										{p.description}
+									</span>
+								</div>
+								<div className='font-oswald text-xs uppercase tracking-widest text-neon/60 group-hover:text-neon transition-colors mt-auto'>
+									Kuzatish →
+								</div>
+							</a>
+						</FadeIn>
 					))}
 				</div>
 			</div>

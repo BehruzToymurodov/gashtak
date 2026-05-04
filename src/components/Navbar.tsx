@@ -5,6 +5,7 @@ const LINKS = [
 	{ label: 'Mehmonlar', href: '#mehmonlar' },
 	{ label: 'Haqida', href: '#haqida' },
 	{ label: 'Tinglash', href: '#tinglash' },
+	{ label: 'Aloqa', href: '#aloqa' },
 ]
 
 export default function Navbar() {
