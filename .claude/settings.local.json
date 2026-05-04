@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm run *)",
       "Bash(curl -s http://localhost:5173)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(rsync -av /home/user/gashtak/src/ /mnt/ntfs/Bekhruz/Gashtak/src/ /home/user/gashtak/index.html /mnt/ntfs/Bekhruz/Gashtak/ /home/user/gashtak/vercel.json /mnt/ntfs/Bekhruz/Gashtak/ /home/user/gashtak/public/_redirects /mnt/ntfs/Bekhruz/Gashtak/public/ /home/user/gashtak/package.json /mnt/ntfs/Bekhruz/Gashtak/)"
     ]
   }
 }
