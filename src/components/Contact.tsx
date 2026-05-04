@@ -1,36 +1,29 @@
+import { useTranslation } from 'react-i18next'
 import FadeIn from './FadeIn'
 
-const PARTNERSHIP_TYPES = [
-	{
-		title: 'Homiylik',
-		desc: "Brendingizni 3.5M+ auditoriyaga taqdim eting. Epizod boshida yoki oxirida reklama integratsiyasi.",
-		icon: (
-			<svg className='w-6 h-6' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5'>
-				<path strokeLinecap='round' strokeLinejoin='round' d='M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33' />
-			</svg>
-		),
-	},
-	{
-		title: 'Mehmon sifatida',
-		desc: "Jamiyatda izi bor insonlar — san'atkor, biznesmen, sportchi — podkastimizda o'z hikoyasini ulashing.",
-		icon: (
-			<svg className='w-6 h-6' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5'>
-				<path strokeLinecap='round' strokeLinejoin='round' d='M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3z' />
-			</svg>
-		),
-	},
-	{
-		title: 'Media hamkorlik',
-		desc: "Kontent yaratish, cross-promotion, intervyu almashish va boshqa media loyihalar uchun birgalikda ishlaymiz.",
-		icon: (
-			<svg className='w-6 h-6' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5'>
-				<path strokeLinecap='round' strokeLinejoin='round' d='M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z' />
-			</svg>
-		),
-	},
+const PARTNERSHIP_ICONS = [
+	(
+		<svg className='w-6 h-6' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5'>
+			<path strokeLinecap='round' strokeLinejoin='round' d='M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33' />
+		</svg>
+	),
+	(
+		<svg className='w-6 h-6' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5'>
+			<path strokeLinecap='round' strokeLinejoin='round' d='M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3z' />
+		</svg>
+	),
+	(
+		<svg className='w-6 h-6' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5'>
+			<path strokeLinecap='round' strokeLinejoin='round' d='M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z' />
+		</svg>
+	),
 ]
 
+const PARTNERSHIP_KEYS = ['sponsorship', 'guest', 'media'] as const
+
 export default function Contact() {
+	const { t } = useTranslation()
+
 	return (
 		<section id='aloqa' className='py-24 px-6'>
 			<div className='max-w-7xl mx-auto'>
@@ -39,30 +32,29 @@ export default function Contact() {
 					<div className='flex items-center gap-4'>
 						<div className='h-px w-12 bg-neon/40' />
 						<span className='font-barlow text-xs uppercase tracking-[0.4em] text-white/40'>
-							Hamkorlik
+							{t('contact.eyebrow')}
 						</span>
 						<div className='h-px w-12 bg-neon/40' />
 					</div>
-					<h2 className='section-title'>Hamkorlik qilaylik</h2>
+					<h2 className='section-title'>{t('contact.title')}</h2>
 					<p className='font-barlow text-base md:text-lg text-white/55 max-w-xl'>
-						#GASHTAK — O'zbekistonning eng yirik celebrity podcast platformasi.
-						Brendingiz yoki g'oyangiz bilan bog'laning.
+						{t('contact.subtitle')}
 					</p>
 				</FadeIn>
 
 				{/* Partnership types */}
 				<div className='grid grid-cols-1 md:grid-cols-3 gap-5 mb-16'>
-					{PARTNERSHIP_TYPES.map((p, i) => (
-						<FadeIn key={p.title} delay={i * 0.1}>
+					{PARTNERSHIP_KEYS.map((key, i) => (
+						<FadeIn key={key} delay={i * 0.1}>
 							<div className='flex flex-col gap-4 p-8 border border-white/10 bg-white/[0.02] h-full'>
 								<div className='w-11 h-11 flex items-center justify-center border border-neon/30 text-neon/70'>
-									{p.icon}
+									{PARTNERSHIP_ICONS[i]}
 								</div>
 								<h3 className='font-oswald font-bold text-xl uppercase tracking-wider text-white/90'>
-									{p.title}
+									{t(`contact.types.${key}.title`)}
 								</h3>
 								<p className='font-barlow text-sm text-white/55 leading-relaxed flex-1'>
-									{p.desc}
+									{t(`contact.types.${key}.desc`)}
 								</p>
 							</div>
 						</FadeIn>
@@ -78,7 +70,6 @@ export default function Contact() {
 							boxShadow: '0 0 60px rgba(125,255,244,0.06), inset 0 0 60px rgba(125,255,244,0.02)',
 						}}
 					>
-						{/* Decorative corner */}
 						<div className='absolute top-0 left-0 w-16 h-16 pointer-events-none'
 							style={{ background: 'linear-gradient(135deg, rgba(125,255,244,0.15) 0%, transparent 60%)' }}
 						/>

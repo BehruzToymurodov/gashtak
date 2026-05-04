@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "podcasts": "Podcasts",
+    "guests": "Guests",
+    "about": "About",
+    "social": "Social Media",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tag": "Uzbek Celebrity Podcast",
+    "tagline": "Introducing Uzbek stars to the world",
+    "sub": "Famous personalities · Engaging conversations",
+    "watch": "Watch on YouTube",
+    "latestEp": "Latest featured episode",
+    "views": "views",
+    "watchCta": "Click to watch →",
+    "scrollDown": "Scroll down"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "About",
+    "p1": "#GASHTAK is a podcast featuring deep and candid conversations with Uzbekistan's most renowned personalities. In every episode, we discover our guests' life journeys, secrets of success, and their human side.",
+    "p2": "Our goal is not just an interview, but inspiring and authentic conversations. Every episode is a new story, a new perspective on the world.",
+    "p3": "The podcast is released regularly on YouTube and is also available in audio format on Spotify and other platforms. Follow us and watch new episodes first.",
+    "subscribe": "Subscribe to the channel",
+    "stats": {
+      "episodes": "Episodes",
+      "views": "Views",
+      "since": "Since"
+    }
+  },
+  "episodes": {
+    "eyebrow": "Featured podcasts",
+    "title": "Podcasts",
+    "all": "All podcasts",
+    "views": "views",
+    "watch": "Watch",
+    "viewAll": "View all podcasts",
+    "fullArchive": "Full archive",
+    "archiveSubtitle": "All episodes of the GASHTAK podcast. Click on any to watch.",
+    "back": "Go back"
+  },
+  "guests": {
+    "title": "Guests",
+    "subtitle": "Meet the famous guests of our podcast.",
+    "searchPlaceholder": "Name, role or keyword...",
+    "appearedIn": "Appeared in podcasts",
+    "bios": {
+      "hasanxon-domla": "A prominent religious scholar and lecturer from Uzbekistan. Teaches millions of listeners about knowledge and life.",
+      "jamshidxon-ziyoxonov": "Uzbek actor known for his brilliant roles in theater and cinema. Brings a unique soul to every character.",
+      "azimjon-pulatov": "Content creator and blogger with a large audience on social media. A popular personality among youth.",
+      "anvar-narzullayev": "One of Uzbekistan's most beloved comedians. Makes millions of viewers laugh on stage and on screen."
+    },
+    "roles": {
+      "Olim": "Scholar",
+      "Aktyor": "Actor",
+      "Blogger": "Blogger",
+      "Komediant": "Comedian"
+    }
+  },
+  "platforms": {
+    "eyebrow": "Follow us",
+    "title": "Social Media",
+    "follow": "Follow →",
+    "descriptions": {
+      "YouTube": "Full podcasts",
+      "Spotify": "Audio version",
+      "Instagram": "Behind the scenes",
+      "TikTok": "Short clips",
+      "Telegram": "News and updates"
+    }
+  },
+  "contact": {
+    "eyebrow": "Partnership",
+    "title": "Let's collaborate",
+    "subtitle": "Reach out for business proposals, sponsorships and media partnerships.",
+    "types": {
+      "sponsorship": {
+        "title": "Sponsorship",
+        "desc": "Introduce your brand to millions of viewers"
+      },
+      "guest": {
+        "title": "Be a guest",
+        "desc": "Join the podcast and share your story"
+      },
+      "media": {
+        "title": "Media partnership",
+        "desc": "Create content together and grow your audience"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Introducing Uzbek stars to the world",
+    "rights": "All rights reserved.",
+    "location": "Uzbekistan · Tashkent"
+  },
+  "watch": {
+    "back": "Back",
+    "label": "PODCAST",
+    "related": "Other podcasts"
+  },
+  "actions": {
+    "like": "Like",
+    "liked": "Liked",
+    "comment": "Comment",
+    "share": "Share",
+    "copied": "Copied!",
+    "watchYoutube": "Watch on YouTube"
+  },
+  "comments": {
+    "title": "Site comments",
+    "count": "{{count}} comments",
+    "placeholder": "Leave a comment...",
+    "submit": "Post comment",
+    "guestName": "Guest",
+    "empty": "No comments yet. Be the first!"
+  },
+  "error": {
+    "title": "Content failed to load",
+    "retry": "Try again"
+  }
+}

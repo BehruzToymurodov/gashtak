@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "podcasts": "Podkastlar",
+    "guests": "Mehmonlar",
+    "about": "Haqida",
+    "social": "Ijtimoiy Tarmoqlar",
+    "contact": "Aloqa"
+  },
+  "hero": {
+    "tag": "O'zbek Celebrity Podcast",
+    "tagline": "O'zbek yulduzlarini dunyoga tanitamiz",
+    "sub": "Mashxur siymolar · Qiziqarli suhbatlar",
+    "watch": "YouTube'da Ko'ring",
+    "latestEp": "So'nggi mashhur epizod",
+    "views": "ko'rish",
+    "watchCta": "Ko'rish uchun bosing →",
+    "scrollDown": "Pastga"
+  },
+  "about": {
+    "eyebrow": "Biz haqimizda",
+    "title": "Haqida",
+    "p1": "#GASHTAK — O'zbekistonning eng mashhur shaxsiyatlari bilan chuqur va ochiq suhbatlar o'tkazuvchi podkast. Har bir epizodda mehmonlarimizning hayot yo'li, muvaffaqiyat sirlari va insoniy tomonlarini kashf etamiz.",
+    "p2": "Bizning maqsadimiz — shunchaki intervyu emas, balki haqiqiy va ta'sirli suhbatlar orqali tomoshabinlarga ilhom berish. Har bir epizod — bu yangi bir hikoya, yangi bir dunyoqarash.",
+    "p3": "Podkastimiz YouTube'da muntazam chiqib turadi va Spotify hamda boshqa platformalarda audio ko'rinishda ham mavjud. Bizni kuzatib boring va yangi epizodlarni birinchilar qatorida ko'ring.",
+    "subscribe": "Kanalga obuna bo'ling",
+    "stats": {
+      "episodes": "Epizod",
+      "views": "Ko'rishlar",
+      "since": "Yildan beri"
+    }
+  },
+  "episodes": {
+    "eyebrow": "Mashhur podkastlar",
+    "title": "Podkastlar",
+    "all": "Barcha podkastlar",
+    "views": "ko'rish",
+    "watch": "Ko'rish",
+    "viewAll": "Barcha podkastlarni ko'rish",
+    "fullArchive": "To'liq arxiv",
+    "archiveSubtitle": "GASHTAK podkastining barcha epizodlari. Ularni tomoniga bosing va ko'ring.",
+    "back": "Orqaga qaytish"
+  },
+  "guests": {
+    "title": "Mehmonlar",
+    "subtitle": "Podkastimizning mashhur mehmonlari bilan tanishing.",
+    "searchPlaceholder": "Ism, rol yoki kalit so'z...",
+    "appearedIn": "Podkastlarida qatnashgan",
+    "bios": {
+      "hasanxon-domla": "O'zbekistonning taniqli diniy olimi va ma'ruzachi. Millionlab tinglovchiga ilm va hayot haqida dars beradi.",
+      "jamshidxon-ziyoxonov": "Teatr va kinodagi yorqin rollari bilan tanilgan o'zbek aktyori. Har bir obrazga o'zgacha ruh bag'ishlaydi.",
+      "azimjon-pulatov": "Kontent yaratuvchi va ijtimoiy tarmoqlarda katta auditoriyaga ega blogger. Yoshlar orasida ommabop shaxsiyat.",
+      "anvar-narzullayev": "O'zbekistonning eng sevimli komediantlaridan biri. Sahna va ekranda o'z uslubi bilan millionlab tomoshabinni kuldirib kelmoqda."
+    },
+    "roles": {
+      "Olim": "Olim",
+      "Aktyor": "Aktyor",
+      "Blogger": "Blogger",
+      "Komediant": "Komediant"
+    }
+  },
+  "platforms": {
+    "eyebrow": "Bizni kuzating",
+    "title": "Ijtimoiy Tarmoqlar",
+    "follow": "Kuzatish →",
+    "descriptions": {
+      "YouTube": "To'liq podkastlar",
+      "Spotify": "Audio versiya",
+      "Instagram": "Sahna ortida",
+      "TikTok": "Qisqa kliplar",
+      "Telegram": "Yangiliklar va xabarlar"
+    }
+  },
+  "contact": {
+    "eyebrow": "Hamkorlik",
+    "title": "Hamkorlik qilaylik",
+    "subtitle": "Biznes takliflar, homiylik va media hamkorlik uchun murojaat qiling.",
+    "types": {
+      "sponsorship": {
+        "title": "Homiylik",
+        "desc": "Brendingizni millionlab auditoriyaga tanishtiring"
+      },
+      "guest": {
+        "title": "Mehmon sifatida",
+        "desc": "Podkastimizda qatnashing va hikoyangizni ulashing"
+      },
+      "media": {
+        "title": "Media hamkorlik",
+        "desc": "Birgalikda kontent yarating va auditoriyangizni kengaytiring"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "O'zbek yulduzlarini dunyoga tanitamiz",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "location": "O'zbekiston · Toshkent"
+  },
+  "watch": {
+    "back": "Orqaga",
+    "label": "PODCAST",
+    "related": "Boshqa podkastlar"
+  },
+  "actions": {
+    "like": "Yoqdi",
+    "liked": "Yoqdi",
+    "comment": "Izoh",
+    "share": "Ulashish",
+    "copied": "Nusxalandi!",
+    "watchYoutube": "YouTube'da ko'rish"
+  },
+  "comments": {
+    "title": "Saytdagi izohlar",
+    "count": "{{count}} ta izoh",
+    "placeholder": "Izoh qoldiring...",
+    "submit": "Izoh qoldirish",
+    "guestName": "Mehmon",
+    "empty": "Hali izoh yo'q. Birinchi bo'ling!"
+  },
+  "error": {
+    "title": "Kontent yuklanmadi",
+    "retry": "Qayta urinish"
+  }
+}

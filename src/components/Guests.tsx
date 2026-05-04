@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { EPISODES } from '../data/episodes'
 import type { Guest } from '../data/guests'
 import GUESTS from '../data/guests'
@@ -29,6 +30,10 @@ function SocialLink({ type, url }: { type: string; url: string }) {
 }
 
 function GuestCard({ g, onOpen }: { g: Guest; onOpen: (g: Guest) => void }) {
+	const { t } = useTranslation()
+	const bio = t(`guests.bios.${g.id}`, { defaultValue: g.bio ?? '' })
+	const role = g.role ? t(`guests.roles.${g.role}`, { defaultValue: g.role }) : ''
+
 	return (
 		<button
 			onClick={() => onOpen(g)}
@@ -46,15 +51,16 @@ function GuestCard({ g, onOpen }: { g: Guest; onOpen: (g: Guest) => void }) {
 			<div className='flex flex-col gap-1 w-full text-left'>
 				<div className='flex items-center justify-between'>
 					<h3 className='font-oswald font-semibold text-base text-white/90'>{g.name}</h3>
-					<span className='font-barlow text-xs text-white/40 uppercase'>{g.role}</span>
+					<span className='font-barlow text-xs text-white/40 uppercase'>{role}</span>
 				</div>
-				<p className='font-barlow text-sm text-white/60 line-clamp-2'>{g.bio}</p>
+				<p className='font-barlow text-sm text-white/60 line-clamp-2'>{bio}</p>
 			</div>
 		</button>
 	)
 }
 
 export default function Guests() {
+	const { t } = useTranslation()
 	const [query, setQuery] = useState('')
 	const [selected, setSelected] = useState<Guest | null>(null)
 
@@ -73,14 +79,14 @@ export default function Guests() {
 			<div className='max-w-7xl mx-auto'>
 				<FadeIn className='mb-8 flex items-center justify-between gap-4'>
 					<div>
-						<h2 className='section-title'>Mehmonlar</h2>
-						<p className='font-barlow text-sm text-white/60'>Podkastimizning mashhur mehmonlari bilan tanishing.</p>
+						<h2 className='section-title'>{t('guests.title')}</h2>
+						<p className='font-barlow text-sm text-white/60'>{t('guests.subtitle')}</p>
 					</div>
 					<div className='w-64'>
 						<input
 							value={query}
 							onChange={e => setQuery(e.target.value)}
-							placeholder="Ism, rol yoki kalit so'z..."
+							placeholder={t('guests.searchPlaceholder')}
 							className='w-full bg-black/60 border border-white/10 px-3 py-2 text-sm outline-none focus:border-neon/50'
 						/>
 					</div>
@@ -117,10 +123,14 @@ export default function Guests() {
 								<div className='flex-1 flex flex-col gap-4'>
 									<div>
 										<h3 className='font-oswald text-2xl text-white/90'>{selected.name}</h3>
-										<p className='font-barlow text-sm text-white/40 mt-1 uppercase tracking-widest'>{selected.role}</p>
+										<p className='font-barlow text-sm text-white/40 mt-1 uppercase tracking-widest'>
+											{selected.role ? t(`guests.roles.${selected.role}`, { defaultValue: selected.role }) : ''}
+										</p>
 									</div>
 
-									<p className='font-barlow text-base text-white/80'>{selected.bio}</p>
+									<p className='font-barlow text-base text-white/80'>
+										{t(`guests.bios.${selected.id}`, { defaultValue: selected.bio ?? '' })}
+									</p>
 
 									{selected.socials && selected.socials.length > 0 && (
 										<div className='flex flex-wrap gap-2'>
@@ -131,7 +141,7 @@ export default function Guests() {
 									{selected.appearedIn && selected.appearedIn.length > 0 && (
 										<div>
 											<h4 className='font-oswald text-sm text-white/90 uppercase tracking-wider mb-3'>
-												Podkastlarida qatnashgan
+												{t('guests.appearedIn')}
 											</h4>
 											<div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
 												{selected.appearedIn.map(id => {
@@ -142,7 +152,7 @@ export default function Guests() {
 															<img src={ep.thumb} alt={`EP ${ep.ep}`} loading='lazy' className='w-16 h-9 object-cover' />
 															<div className='text-left'>
 																<div className='font-oswald text-sm'>EP {String(ep.ep).padStart(2, '0')}</div>
-																<div className='font-barlow text-xs text-white/50'>Podkast</div>
+																<div className='font-barlow text-xs text-white/50'>{t('watch.label')}</div>
 															</div>
 														</div>
 													)
